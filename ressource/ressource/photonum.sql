@@ -62,11 +62,11 @@ create table LesAlbums (
 	id_impression number,
 	reference varchar2(20),
 	titre varchar2(20),
-	LesPhotos_couverture number,
+	photo_couverture number,
 	constraint LesAlbums_PK primary key (id_impression),
 	constraint LesAlbums_FK1 foreign key (reference) REFERENCES LesCatalogues(reference),
 	constraint LesAlbums_FK2 foreign key (id_impression) REFERENCES LesImpressions(id_impression),
-	constraint LesAlbums_FK3 foreign key (LesPhotos_couverture) REFERENCES LesPhotos(id_photo)
+	constraint LesAlbums_FK3 foreign key (photo_couverture) REFERENCES LesPhotos(id_photo)
 );
 
 create table LesCadres(
