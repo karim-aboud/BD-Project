@@ -48,14 +48,14 @@ create table LesArticles (
 );
 
 
-create table LesTiragesLesPhotos(
+create table LesTiragesPhotos(
 	id_impression number,
 	reference varchar2(20),
 	chemin_acces varchar2(20),
 	parametres varchar2(20),
 	nb_exemplaire number,
-	constraint LesTiragesLesPhotos_PK primary key (id_impression),
-	constraint LesTiragesLesPhotos_FK1 foreign key (reference) REFERENCES LesCatalogues(reference)
+	constraint LesTiragesPhotos_PK primary key (id_impression),
+	constraint LesTiragesPhotos_FK1 foreign key (reference) REFERENCES LesCatalogues(reference)
 );
 
 create table LesAlbums (
