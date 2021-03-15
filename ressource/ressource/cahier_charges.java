@@ -20,7 +20,8 @@ public class cahier_charges {
 
   	    // Enregistrement du driver Oracle
   	    System.out.print("Loading Oracle driver... "); 
-  	    DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());  	    System.out.println("loaded");
+  	    DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+		System.out.println("loaded");
   	    
 	    
   	    // Etablissement de la connection
@@ -32,11 +33,13 @@ public class cahier_charges {
   	    conn.setAutoCommit(true);
 
 	    // code m�tier de la fonctionnalit�
-  	    System.out.println("Connecté à la base de donnée Zoo");
+  	    System.out.println("Connecté à la base de donnée");
   	    Scanner sc = new Scanner(System.in);
   	    System.out.flush();
 
-        // CAHIER DES CHARGES 
+        // CAHIER DES CHARGES
+		start_menu();
+
         creerClient(conn);
 
   	    // Liberation des ressources et fermeture de la connexion...
@@ -57,25 +60,78 @@ public class cahier_charges {
 
           }
     	}
+		
+		private static void start_menu(){
+			System.out.println("
+			# BIENVENUE DANS LE MENU PRINCIPAL #
+			# 1.SE CONNECTER
+			# 2.S'ENREGISTRER
+			");
+			String input_user;
+			do{
+				System.out.print("@ entrez 1 ou 2 :	")
+				input_user = LectureClavier.lireChaine();
+			}while (!(input_user.equals("1") || input_user.equals("2")));
+			
+			switch(input_user) {
+				case "1" :
+					creerClient();
+					break;
+				case "2" :
+					connectClient();
+					break;
+				default :
+					break;
+			}
+		}
 
         private static void creerClient(Connection conn) throws SQLException {
             System.out.println("CREATION D'UN NOUVEAU CLIENT");
             Statement stmt = conn.createStatement();
             // Demande les informations du nouveau client
-        	System.out.println("Informations du client");
-        	String adrMail, nom, prenom, motDePasse;
+        	System.out.println("Entrez vos informations");
+        	String adrMail, nom, prenom, motDePasse, motDePasse2;
         	int idClient;
-        	System.out.println("Quel est son adresse mail ? ");
+        	System.out.println("Entrez votre adresse mail ? ");
         	adrMail = LectureClavier.lireChaine();
-        	System.out.println("Quel est son nom ? ");
+        	System.out.println("Entrez est votre nom ? ");
         	nom = LectureClavier.lireChaine();
-            System.out.println("Quel est son prénom ? ");
+            System.out.println("Entrez est votre prénom ? ");
         	prenom = LectureClavier.lireChaine();
-            System.out.println("Quel est son mot de passe ? ");
+			// Demande le mot de passe en double
+			do {
+            System.out.println("Entrez votre mot de passe ? ");
         	motDePasse = LectureClavier.lireChaine();
+			System.out.println("Entrez votre mot de passe à nouveau : ");
+        	motDePasse2 = LectureClavier.lireChaine();
+			} while (!motDePasse.equals(motDePasse2));
 
+			// Créé un nouvel ID
+			ResultSet reqIdClient = stmt.executeQuery("SELECT MAX(idClient) FROM LesClient");
+			while (reqIdClient.next()) {
+				idClient = reqIdClient.getInt(1) + 1;
+			}
+			reqIdClient.close();
+
+			// Ajout du client dans la BD
+			String query = "INSERT INTO LesClient values ('" + adrMail "', " + "'" + nom + "', " +
+			"'" + prenom + "', " + "'" + motDePasse + "', " + "'" + idClient + ")";
+			stmt.executeQuery(query);
+			stmt.close();
+			stmt.commit();
         }
         
+
+
+
+
+
+//VVVVVVVV   A PARTIR D'ICI C'EST L'ANCIEN TP   VVVVVVVVV
+
+
+
+
+
 		// Ajoute un nouvel animal
         private static void ajouterNouvelAnimal(Connection conn) throws SQLException {
 			System.out.println("AJOUTER UN NOUVEL ANIMAL :");
