@@ -1,4 +1,3 @@
-
 create table LesClients(
 	id_client number,
 	adr_mail varchar2(25),
@@ -14,17 +13,16 @@ create table LesAdresses(
 	nom_rue varchar2(25),
 	ville varchar2(20),
 	code_postal number,
-	constraint LesAdresses_PK primary key (id_client),
-	constraint LesAdresse_PK FOREIGN KEY (id_client) REFERENCES LesClients(id_client)
+	constraint LesAdresses_PK primary key (id_client)
 );
 
 
 create table LesCommandes (
 	id_commande number,
-	id_client number,
 	date_commande date,
 	prix_total float,
 	statut varchar2(15),
+	id_client number,
 	constraint LesCommande_C1 check ( statut in ('En Cours', 'Pret a envoyer', 'Envoyee') ),
 	constraint LesCommande_PK primary key (id_commande),
 	constraint LesCommande_FK foreign key (id_client) REFERENCES LesClients(id_client)
@@ -127,20 +125,17 @@ create table LesPages (
 	constraint LesPages_FK foreign key (id_impression) REFERENCES LesImpressions(id_impression)
 );
 
-create table LesCatalogues (
+create table LesCatalogues(
 	support varchar2(10),
 	reference varchar2(20),
 	prix number,
-	constraint LesCatalogues_PK primary key (support,reference),
+	constraint LesCatalogues_PK primary key (reference),
 	constraint LesCatalogues_C1 check (support in ('papier','calendrier','album','cadre'))
 );
 
 
-create table LesStocks (
-	support varchar2(10),
+create table LesStocks(
 	reference varchar2(10),
 	quantite number,
-	constraint LesStocks_FK foreign key (support,reference)  REFERENCES LesCatalogues(support,reference)
+	constraint LesStocks_FK foreign key (reference)  REFERENCES LesCatalogues(reference)
 );
-
-
