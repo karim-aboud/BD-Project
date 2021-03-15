@@ -39,7 +39,7 @@ create table LesImpressions(
 
 create table LesArticles (
 	id_impression number,
-	prix_LesImpressions number,
+	prix number,
 	quantite number,
 	id_commande number,
 	constraint LesArticle_PK primary key (id_impression),
@@ -51,7 +51,7 @@ create table LesArticles (
 create table LesTiragesLesPhotos(
 	id_impression number,
 	reference varchar2(20),
-	cheminAcces varchar2(20),
+	chemin_acces varchar2(20),
 	parametres varchar2(20),
 	nb_exemplaire number,
 	constraint LesTiragesLesPhotos_PK primary key (id_impression),
