@@ -1,3 +1,4 @@
+
 create table LesClients(
 	id_client number,
 	adr_mail varchar2(25),
@@ -13,16 +14,17 @@ create table LesAdresses(
 	nom_rue varchar2(25),
 	ville varchar2(20),
 	code_postal number,
-	constraint LesAdresses_PK primary key (id_client)
+	constraint LesAdresses_PK primary key (id_client),
+	constraint LesAdresse_PK FOREIGN KEY (id_client) REFERENCES LesClients(id_client)
 );
 
 
 create table LesCommandes (
 	id_commande number,
+	id_client number,
 	date_commande date,
 	prix_total float,
 	statut varchar2(15),
-	id_client number,
 	constraint LesCommande_C1 check ( statut in ('En Cours', 'Pret a envoyer', 'Envoyee') ),
 	constraint LesCommande_PK primary key (id_commande),
 	constraint LesCommande_FK foreign key (id_client) REFERENCES LesClients(id_client)
