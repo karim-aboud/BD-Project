@@ -1,5 +1,3 @@
-
-
 INSERT INTO LesClients VALUES(1, 'pierre@uga.fr', 'CHEVALIER', 'Pierre', 'pierre');
 INSERT INTO LesClients VALUES(2, 'samuel@uga.fr', 'LAURAS', 'Samuel', 'samuel');
 INSERT INTO LesClients VALUES(3, 'joumana@uga.fr', 'ELDAKAR', 'Joumana', 'jumana');
@@ -10,31 +8,23 @@ INSERT INTO LesClients VALUES(7, 'jammy@lol.fr', 'YES', 'Jammy', 'hey');
 
 
 
+INSERT INTO LesAdresses VALUES(1, 16, 'Rue Gustave Eiffel', 'Paris', 91130);
+INSERT INTO LesAdresses VALUES(2, 74, 'Rue Banaudon', 'Paris', 69006);
+INSERT INTO LesAdresses VALUES(3, 43, 'Rue de Strasbourg', 'Clermond Ferrand', 63000);
+INSERT INTO LesAdresses VALUES(4, 46, 'cours Jean Jaures', 'Bordeaux', 92000);
+INSERT INTO LesAdresses VALUES(5, 90, 'Avenue De Marlioz', 'Argenteuil', 95100);
+INSERT INTO LesAdresses VALUES(6, 49, 'Faubourg Saint Honoré', 'Paris', 75018);
+INSERT INTO LesAdresses VALUES(7, 8, 'cours Franklin Roosevelt', 'Marseille', 13010);
 
 
 
-
-INSERT INTO LesAdresses VALUES(1, 18, 'rue monmarte', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(1, 20, 'rue monmarte', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(2, 1, 'rue de malade', 'Paris', 92000);
-INSERT INTO LesAdresses VALUES(2, 100, 'rue de ouf', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(3, 8, 'rue moyenne', 'Lyon', 69230);
-INSERT INTO LesAdresses VALUES(4, 2, 'rue de malade', 'Paris', 92000);
-INSERT INTO LesAdresses VALUES(5, 10, 'rue de ouf', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(5, 8, 'rue moyenne', 'Lyon', 69230);
-INSERT INTO LesAdresses VALUES(6, 3, 'rue de malade', 'Paris', 92000);
-INSERT INTO LesAdresses VALUES(6, 10, 'rue de ouf', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(7, 8, 'rue moyenne', 'Lyon', 69230);
-
-
-
-INSERT INTO LesCommandes VALUES(1, 12-03-2021, 14.00, 'EN_COURS', 1);
-INSERT INTO LesCommandes VALUES(2, 13-03-2021, 13.00, 'ENVOYEE', 2);
-INSERT INTO LesCommandes VALUES(3, 12-03-2021, 10.00, 'TERMINE', 3);
-INSERT INTO LesCommandes VALUES(4, 12-02-2021, 5.00, 'PRET', 3);
-INSERT INTO LesCommandes VALUES(5, 12-03-2021, 6.00, 'EN_COURS', 2);
-INSERT INTO LesCommandes VALUES(6, 13-03-2021, 10.01, 'EN_COURS', 1);
-INSERT INTO LesCommandes VALUES(7, 12-03-2021, 14.02, 'EN_COURS', 1);
+INSERT INTO LesCommandes VALUES(1, TO_DATE('12-03-2021','DD-MM-YYYY'), 14.00, 'En cours', 1);
+INSERT INTO LesCommandes VALUES(2, TO_DATE('13-03-2021','DD-MM-YYYY'), 13.00, 'Envoyée', 2);
+INSERT INTO LesCommandes VALUES(3, TO_DATE('12-03-2021','DD-MM-YYYY'), 10.00, 'Envoyée', 3);
+INSERT INTO LesCommandes VALUES(4, TO_DATE('12-03-2021','DD-MM-YYYY'), 5.00, 'Prêt à l''envoi', 3);
+INSERT INTO LesCommandes VALUES(5, TO_DATE('12-03-2021','DD-MM-YYYY'), 6.00, 'En cours', 2);
+INSERT INTO LesCommandes VALUES(6, TO_DATE('13-03-2021','DD-MM-YYYY'), 10.01, 'En cours', 1);
+INSERT INTO LesCommandes VALUES(7, TO_DATE('12-03-2021','DD-MM-YYYY'), 14.02, 'En cours', 1);
 
 
 
@@ -45,44 +35,59 @@ INSERT INTO LesImpressions VALUES(3, 1);
 
 
 
-
 INSERT INTO LesArticles VALUES(2, 30, 2, 1);
 
 
+INSERT INTO LesCatalogues VALUES('papier','160x90MAT', 1.00);
+INSERT INTO LesCatalogues VALUES('papier','350x200MAT', 2.00);
+INSERT INTO LesCatalogues VALUES('papier','700x400MAT', 4.00);
+INSERT INTO LesCatalogues VALUES('papier','160x90GLAS', 1.50);
+INSERT INTO LesCatalogues VALUES('papier','350x200GLAS', 2.50);
+INSERT INTO LesCatalogues VALUES('papier','700x400GLAS', 4.50);
+INSERT INTO LesCatalogues VALUES('album','200x300LO', 19.90);
+INSERT INTO LesCatalogues VALUES('album', '200x300HI', 29.90);
+INSERT INTO LesCatalogues VALUES('album','300x200LO', 19.90);
+INSERT INTO LesCatalogues VALUES('album','300x200HI', 29.90);
+INSERT INTO LesCatalogues VALUES('calendrier','15x21MURAL', 5.99);
+INSERT INTO LesCatalogues VALUES('calendrier','15x21BUREAU', 7.99);
+INSERT INTO LesCatalogues VALUES('calendrier','30x40POSTER', 5.99);
+INSERT INTO LesCatalogues VALUES('calendrier','21x28MAGNETIQUE', 7.99);
+INSERT INTO LesCatalogues VALUES('cadre','160x90METAL', 4.90);
+INSERT INTO LesCatalogues VALUES('cadre','350x200METAL', 9.90);
+INSERT INTO LesCatalogues VALUES('cadre','160x90BOIS', 3.90);
+INSERT INTO LesCatalogues VALUES('cadre','350x200BOIS', 6.90);
+
+INSERT INTO LesFichierImages VALUES(1, 'img/test.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 9, 0);
+INSERT INTO LesFichierImages VALUES(1, 'img/test2.png', TO_DATE('13-03-2021','DD-MM-YYYY'), '<info>', 15, 1);
+INSERT INTO LesFichierImages VALUES(1, 'img/test3.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 2, 0);
+INSERT INTO LesFichierImages VALUES(2, 'img/test4.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 5, 1);
+INSERT INTO LesFichierImages VALUES(3, 'img/tata.png', TO_DATE('13-03-2021','DD-MM-YYYY'), '<info>', 13, 1);
+INSERT INTO LesFichierImages VALUES(3, 'img/toto.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 10, 1);
+
+
+/* pages */
+
+
+/* photos */
+
+
+/* albums */
+
+
+/* cadres */
+
+
+/* calendrier */
+
+
+/* promotions */
+
+
+/* stocks */
 
 
 
-INSERT INTO LesTiragesLesPhotos VALUES(1, '160x90GLAS', 'img/test.png', '<str>', 3);
-
-
-
-
-INSERT INTO LesFichierImages VALUES(1, 'img/test.png', 44267, '<info>', 9, 0);
-INSERT INTO LesFichierImages VALUES(1, 'img/test2.png', 44260, '<info>', 15, 1);
-INSERT INTO LesFichierImages VALUES(1, 'img/test3.png', 44272, '<info>', 2, 0);
-INSERT INTO LesFichierImages VALUES(2, 'img/test4.png', 44239, '<info>', 5, 1);
-INSERT INTO LesFichierImages VALUES(3, 'img/toip.png', 44260, '<info>', 13, 1);
-INSERT INTO LesFichierImages VALUES(3, 'img/toto.png', 44231, '<info>', 10, 1);
-
-
-INSERT INTO LesCatalogues VALUES(tirage, '160x90', 'MAT', '160x90MAT', 1.00);
-INSERT INTO LesCatalogues VALUES(tirage, '350x200', 'MAT', '350x200MAT', 2.00);
-INSERT INTO LesCatalogues VALUES(tirage, '700x400', 'MAT', '700x400MAT', 4.00);
-INSERT INTO LesCatalogues VALUES(tirage, '160x90', 'GLAS', '160x90GLAS', 1.50);
-INSERT INTO LesCatalogues VALUES(tirage, '350x200', 'GLAS', '350x200GLAS', 2.50);
-INSERT INTO LesCatalogues VALUES(tirage, '700x400', 'GLAS', '700x400GLAS', 4.50);
-INSERT INTO LesCatalogues VALUES(album, '200x300', 'LO', '200x300LO', 19.90);
-INSERT INTO LesCatalogues VALUES(album, '200x300', 'HI', '200x300HI', 29.90);
-INSERT INTO LesCatalogues VALUES(album, '300x200', 'LO', '300x200LO', 19.90);
-INSERT INTO LesCatalogues VALUES(album, '300x200', 'HI', '300x200HI', 29.90);
-INSERT INTO LesCatalogues VALUES(calendrier, '200x300', 'LO', '200x300LO', 5.99);
-INSERT INTO LesCatalogues VALUES(calendrier, '200x300', 'HI', '200x300HI', 7.99);
-INSERT INTO LesCatalogues VALUES(calendrier, '300x200', 'LO', '300x200LO', 5.99);
-INSERT INTO LesCatalogues VALUES(calendrier, '300x200', 'HI', '300x200HI', 7.99);
-INSERT INTO LesCatalogues VALUES(cadre, '160x90', 'METAL', '160x90METAL', 4.90);
-INSERT INTO LesCatalogues VALUES(cadre, '350x200', 'METAL', '350x200METAL', 9.90);
-INSERT INTO LesCatalogues VALUES(cadre, '160x90', 'BOIS', '160x90BOIS', 3.90);
-INSERT INTO LesCatalogues VALUES(cadre, '350x200', 'BOIS', '350x200BOIS', 6.90);
+INSERT INTO LesTiragesPhotos VALUES(1, '160x90GLAS', 'img/test.png', '<str>', 3);
 
 
 
