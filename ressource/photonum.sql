@@ -55,7 +55,7 @@ create table LesCatalogues(
 	constraint LesCatalogues_C1 check (support in ('papier','calendrier','album','cadre'))
 );
 
-create table LesFichierImages(
+create table LesFichiersImages(
 	id_client number,
 	chemin_acces varchar2(20),
 	date_creation date,
@@ -77,7 +77,7 @@ create table LesPhotos(
 	constraint LesPhotos_FK2 foreign key (chemin_acces) REFERENCES LesFichierImages(chemin_acces)
 );
 
-create table LesTiragesLesPhotos(
+create table LesTiragesPhotos(
 	id_impression number,
 	reference varchar2(20),
 	cheminAcces varchar2(20),
