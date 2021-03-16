@@ -23,7 +23,7 @@ create table LesCommandes (
 	prix_total float,
 	statut varchar2(15),
 	id_client number,
-	constraint LesCommande_C1 check ( statut in ('En Cours', 'Pret a envoyer', 'Envoyee') ),
+	constraint LesCommande_C1 check ( statut in ('En Cours', 'Prêt  à  l''envoi', 'Envoyée') ),
 	constraint LesCommande_PK primary key (id_commande),
 	constraint LesCommande_FK foreign key (id_client) REFERENCES LesClients(id_client)
 );
@@ -39,7 +39,7 @@ create table LesImpressions(
 
 create table LesArticles (
 	id_impression number,
-	prix number,
+	prix_LesImpressions number,
 	quantite number,
 	id_commande number,
 	constraint LesArticle_PK primary key (id_impression),
@@ -48,25 +48,25 @@ create table LesArticles (
 );
 
 
-create table LesTiragesPhotos(
+create table LesTiragesLesPhotos(
 	id_impression number,
 	reference varchar2(20),
-	chemin_acces varchar2(20),
+	cheminAcces varchar2(20),
 	parametres varchar2(20),
 	nb_exemplaire number,
-	constraint LesTiragesPhotos_PK primary key (id_impression),
-	constraint LesTiragesPhotos_FK1 foreign key (reference) REFERENCES LesCatalogues(reference)
+	constraint LesTiragesLesPhotos_PK primary key (id_impression),
+	constraint LesTiragesLesPhotos_FK1 foreign key (reference) REFERENCES LesCatalogues(reference)
 );
 
 create table LesAlbums (
 	id_impression number,
 	reference varchar2(20),
 	titre varchar2(20),
-	photo_couverture number,
+	LesPhotos_couverture number,
 	constraint LesAlbums_PK primary key (id_impression),
 	constraint LesAlbums_FK1 foreign key (reference) REFERENCES LesCatalogues(reference),
 	constraint LesAlbums_FK2 foreign key (id_impression) REFERENCES LesImpressions(id_impression),
-	constraint LesAlbums_FK3 foreign key (photo_couverture) REFERENCES LesPhotos(id_photo)
+	constraint LesAlbums_FK3 foreign key (LesPhotos_couverture) REFERENCES LesPhotos(id_photo)
 );
 
 create table LesCadres(
