@@ -37,9 +37,9 @@ create table LesCommandes (
 	id_commande number,
 	date_commande date,
 	prix_total float,
-	statut varchar2(15),
+	statut varchar2(20),
 	id_client number,
-	constraint LesCommande_C1 check ( statut in ('En Cours', 'Prêt  à  l''envoi', 'Envoyée') ),
+	constraint LesCommande_C1 check ( statut in ('En cours', 'Prêt à l''envoi', 'Envoyée') ),
 	constraint LesCommande_PK primary key (id_commande),
 	constraint LesCommande_FK foreign key (id_client) REFERENCES LesClients(id_client)
 );
@@ -98,7 +98,7 @@ create table LesPhotos(
 	id_page number, 
 	chemin_acces varchar2(20),
 	parametres varchar2(20),
-	text_descriptif varchar2(25),
+	text_descriptif varchar2(30),
 	constraint LesPhotos_PK primary key (id_photo),
 	constraint LesPhotos_FK1 foreign key (id_page) REFERENCES LesPages(id_page), 
 	constraint LesPhotos_FK2 foreign key (chemin_acces) REFERENCES LesFichierImages(chemin_acces)
@@ -152,7 +152,7 @@ create table LesPromotions (
 
  
 create table LesStocks(
-	reference varchar2(10),
+	reference varchar2(20),
 	quantite number,
 	constraint LesStocks_FK foreign key (reference)  REFERENCES LesCatalogues(reference)
 );
