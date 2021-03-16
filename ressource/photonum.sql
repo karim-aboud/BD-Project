@@ -1,3 +1,19 @@
+drop table LesClients cascade constraints;
+drop table LesAdresses cascade constraints;
+drop table LesCommandes cascade constraints;
+drop table LesImpressions cascade constraints;
+drop table LesArticles cascade constraints;
+drop table LesCatalogues cascade constraints;
+drop table LesFichiersImages cascade constraints;
+drop table LesPhotos cascade constraints;
+drop table LesTiragesPhotos cascade constraints;
+drop table LesAlbums cascade constraints;
+drop table LesCadres cascade constraints;
+drop table LesCalendriers cascade constraints;
+drop table LesPromotions cascade constraints;
+drop table LesPages cascade constraints;
+drop table LesStocks cascade constraints;
+
 create table LesClients(
 	id_client number,
 	adr_mail varchar2(25),
@@ -62,9 +78,20 @@ create table LesFichiersImages(
 	info_prise_vue varchar2(20),	
 	resolution_img number(6) not null,
 	est_partage  number(1) not NULL check  (est_partage in (0,1)),
-  	constraint LesFichierImages_PK primary key (chemin_acces),
-  	constraint LesFichierImages_FK foreign key (id_client) REFERENCES LesClients(id_client)
+  	constraint LesFichiersImages_PK primary key (chemin_acces),
+  	constraint LesFichiersImages_FK foreign key (id_client) REFERENCES LesClients(id_client)
 );
+
+create table LesPages (
+	id_page number,
+	id_impression number,
+	no_LesPages number,
+	mise_en_forme varchar2(20),
+	titre varchar2(15),
+	constraint LesPages_PK primary key (id_page),
+	constraint LesPages_FK foreign key (id_impression) REFERENCES LesImpressions(id_impression)
+);
+
 
 create table LesPhotos(
 	id_photo number,
@@ -83,8 +110,8 @@ create table LesTiragesPhotos(
 	cheminAcces varchar2(20),
 	parametres varchar2(20),
 	nb_exemplaire number,
-	constraint LesTiragesLesPhotos_PK primary key (id_impression),
-	constraint LesTiragesLesPhotos_FK1 foreign key (reference) REFERENCES LesCatalogues(reference)
+	constraint LesTiragesPhotos_PK primary key (id_impression),
+	constraint LesTiragesPhotos_FK1 foreign key (reference) REFERENCES LesCatalogues(reference)
 );
 
 create table LesAlbums (
@@ -122,15 +149,6 @@ create table LesPromotions (
 );
 
 
-create table LesPages (
-	id_page number,
-	id_impression number,
-	no_LesPages number,
-	mise_en_forme varchar2(20),
-	titre varchar2(15),
-	constraint LesPages_PK primary key (id_page),
-	constraint LesPages_FK foreign key (id_impression) REFERENCES LesImpressions(id_impression)
-);
 
  
 create table LesStocks(
@@ -138,3 +156,5 @@ create table LesStocks(
 	quantite number,
 	constraint LesStocks_FK foreign key (reference)  REFERENCES LesCatalogues(reference)
 );
+
+
