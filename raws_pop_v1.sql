@@ -14,17 +14,13 @@ INSERT INTO LesClients VALUES(7, 'jammy@lol.fr', 'YES', 'Jammy', 'hey');
 
 
 
-INSERT INTO LesAdresses VALUES(1, 18, 'rue monmarte', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(1, 20, 'rue monmarte', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(2, 1, 'rue de malade', 'Paris', 92000);
-INSERT INTO LesAdresses VALUES(2, 100, 'rue de ouf', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(3, 8, 'rue moyenne', 'Lyon', 69230);
-INSERT INTO LesAdresses VALUES(4, 2, 'rue de malade', 'Paris', 92000);
-INSERT INTO LesAdresses VALUES(5, 10, 'rue de ouf', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(5, 8, 'rue moyenne', 'Lyon', 69230);
-INSERT INTO LesAdresses VALUES(6, 3, 'rue de malade', 'Paris', 92000);
-INSERT INTO LesAdresses VALUES(6, 10, 'rue de ouf', 'Grenoble', 38000);
-INSERT INTO LesAdresses VALUES(7, 8, 'rue moyenne', 'Lyon', 69230);
+INSERT INTO LesAdresses VALUES(1, 16, 'Rue Gustave Eiffel', 'Paris', 91130);
+INSERT INTO LesAdresses VALUES(2, 74, 'Rue Banaudon', 'Paris', 69006);
+INSERT INTO LesAdresses VALUES(3, 43, 'Rue de Strasbourg', 'Clermond Ferrand', 63000);
+INSERT INTO LesAdresses VALUES(4, 46, 'cours Jean Jaures', 'Bordeaux', 92000);
+INSERT INTO LesAdresses VALUES(5, 90, 'Avenue De Marlioz', 'Argenteuil', 95100);
+INSERT INTO LesAdresses VALUES(6, 49, 'Faubourg Saint Honoré', 'Paris', 75018);
+INSERT INTO LesAdresses VALUES(7, 8, 'cours Franklin Roosevelt', 'Marseille', 13010);
 
 
 
