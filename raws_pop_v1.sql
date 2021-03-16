@@ -65,24 +65,24 @@ INSERT INTO LesFichierImages VALUES(3, 'img/toip.png', 44260, '<info>', 13, 1);
 INSERT INTO LesFichierImages VALUES(3, 'img/toto.png', 44231, '<info>', 10, 1);
 
 
-INSERT INTO LesCatalogues VALUES(tirage, '160x90', 'MAT', '160x90MAT', 1.00);
-INSERT INTO LesCatalogues VALUES(tirage, '350x200', 'MAT', '350x200MAT', 2.00);
-INSERT INTO LesCatalogues VALUES(tirage, '700x400', 'MAT', '700x400MAT', 4.00);
-INSERT INTO LesCatalogues VALUES(tirage, '160x90', 'GLAS', '160x90GLAS', 1.50);
-INSERT INTO LesCatalogues VALUES(tirage, '350x200', 'GLAS', '350x200GLAS', 2.50);
-INSERT INTO LesCatalogues VALUES(tirage, '700x400', 'GLAS', '700x400GLAS', 4.50);
-INSERT INTO LesCatalogues VALUES(album, '200x300', 'LO', '200x300LO', 19.90);
-INSERT INTO LesCatalogues VALUES(album, '200x300', 'HI', '200x300HI', 29.90);
-INSERT INTO LesCatalogues VALUES(album, '300x200', 'LO', '300x200LO', 19.90);
-INSERT INTO LesCatalogues VALUES(album, '300x200', 'HI', '300x200HI', 29.90);
-INSERT INTO LesCatalogues VALUES(calendrier, '200x300', 'LO', '200x300LO', 5.99);
-INSERT INTO LesCatalogues VALUES(calendrier, '200x300', 'HI', '200x300HI', 7.99);
-INSERT INTO LesCatalogues VALUES(calendrier, '300x200', 'LO', '300x200LO', 5.99);
-INSERT INTO LesCatalogues VALUES(calendrier, '300x200', 'HI', '300x200HI', 7.99);
-INSERT INTO LesCatalogues VALUES(cadre, '160x90', 'METAL', '160x90METAL', 4.90);
-INSERT INTO LesCatalogues VALUES(cadre, '350x200', 'METAL', '350x200METAL', 9.90);
-INSERT INTO LesCatalogues VALUES(cadre, '160x90', 'BOIS', '160x90BOIS', 3.90);
-INSERT INTO LesCatalogues VALUES(cadre, '350x200', 'BOIS', '350x200BOIS', 6.90);
+INSERT INTO LesCatalogues VALUES('tirage','160x90MAT', 1.00);
+INSERT INTO LesCatalogues VALUES('tirage','350x200MAT', 2.00);
+INSERT INTO LesCatalogues VALUES('tirage','700x400MAT', 4.00);
+INSERT INTO LesCatalogues VALUES('tirage','160x90GLAS', 1.50);
+INSERT INTO LesCatalogues VALUES('tirage','350x200GLAS', 2.50);
+INSERT INTO LesCatalogues VALUES('tirage','700x400GLAS', 4.50);
+INSERT INTO LesCatalogues VALUES('album','200x300LO', 19.90);
+INSERT INTO LesCatalogues VALUES('album', '200x300HI', 29.90);
+INSERT INTO LesCatalogues VALUES('album','300x200LO', 19.90);
+INSERT INTO LesCatalogues VALUES('album','300x200HI', 29.90);
+INSERT INTO LesCatalogues VALUES('calendrier','200x300LO', 5.99);
+INSERT INTO LesCatalogues VALUES('calendrier','200x300HI', 7.99);
+INSERT INTO LesCatalogues VALUES('calendrier','300x200LO', 5.99);
+INSERT INTO LesCatalogues VALUES('calendrier','300x200HI', 7.99);
+INSERT INTO LesCatalogues VALUES('cadre','160x90METAL', 4.90);
+INSERT INTO LesCatalogues VALUES('cadre','350x200METAL', 9.90);
+INSERT INTO LesCatalogues VALUES('cadre','160x90BOIS', 3.90);
+INSERT INTO LesCatalogues VALUES('cadre','350x200BOIS', 6.90);
 
 
 
