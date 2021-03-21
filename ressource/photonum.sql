@@ -39,7 +39,7 @@ create table LesCommandes (
 	prix_total float,
 	statut varchar2(20),
 	id_client number,
-	constraint LesCommande_C1 check ( statut in ('En cours', 'Prêt à l''envoi', 'Envoyée') ),
+	constraint LesCommande_C1 check ( statut in ('En cours', 'Pret a l''envoi', 'Envoyee') ),
 	constraint LesCommande_PK primary key (id_commande),
 	constraint LesCommande_FK foreign key (id_client) REFERENCES LesClients(id_client)
 );
