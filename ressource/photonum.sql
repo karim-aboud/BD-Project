@@ -24,14 +24,15 @@ CREATE TABLE LesClients(
 	CONSTRAINT cli_pk PRIMARY KEY (IDclient)
 );
 
---LesAdresses(_IDclient, noRue, nomRue, ville, CodePostal);
+--LesAdresses(IDclient, _noRue, _nomRue, _ville, _CodePostal);
 CREATE TABLE LesAdresses(
-	IDclient NUMBER,
 	noRue NUMBER,
 	nomRue VARCHAR2(25),
 	ville VARCHAR2(20),
 	CodePostal NUMBER,
-	CONSTRAINT adr_pk PRIMARY KEY (IDclient)
+	IDclient NUMBER,
+	CONSTRAINT adr_pk PRIMARY KEY (noRue, nomRue, ville, CodePostal),
+	CONSTRAINT adr_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)	
 );
 
 --LesCommandes(_IDcommande, IDclient, DateCommande, prixTOTAL, statut);
@@ -61,7 +62,7 @@ CREATE TABLE LesArticles (
 	prixImpress NUMBER,
 	quantite NUMBER,
 	CONSTRAINT ar_pk PRIMARY KEY (IDimpress),
-	CONSTRAINT ar_fk1 FOREIGN KEY (IDImpress) REFERENCES LesImpressions(IDImpress),
+	CONSTRAINT ar_fk1 FOREIGN KEY (IDimpress) REFERENCES LesImpressions(IDimpress),
 	CONSTRAINT ar_fk2 FOREIGN KEY (IDcommande) REFERENCES LesCommandes(IDcommande)
 );
 
@@ -166,4 +167,4 @@ CREATE TABLE LesStocks(
 	quantite NUMBER,
 	CONSTRAINT stck_pk PRIMARY KEY (refrce),
 	CONSTRAINT stck_fk FOREIGN KEY (refrce)  REFERENCES LesCatalogues(refrce)
-);
+);	
