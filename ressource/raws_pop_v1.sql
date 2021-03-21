@@ -19,9 +19,9 @@ INSERT INTO LesAdresses VALUES(7, 8, 'cours Franklin Roosevelt', 'Marseille', 13
 
 
 INSERT INTO LesCommandes VALUES(1, TO_DATE('12-03-2021','DD-MM-YYYY'), 14.00, 'En cours', 1);
-INSERT INTO LesCommandes VALUES(2, TO_DATE('13-03-2021','DD-MM-YYYY'), 13.00, 'Envoyée', 2);
-INSERT INTO LesCommandes VALUES(3, TO_DATE('12-03-2021','DD-MM-YYYY'), 10.00, 'Envoyée', 3);
-INSERT INTO LesCommandes VALUES(4, TO_DATE('12-03-2021','DD-MM-YYYY'), 5.00, 'Prêt à l''envoi', 3);
+INSERT INTO LesCommandes VALUES(2, TO_DATE('13-03-2021','DD-MM-YYYY'), 13.00, 'Envoyee', 2);
+INSERT INTO LesCommandes VALUES(3, TO_DATE('12-03-2021','DD-MM-YYYY'), 10.00, 'Envoyee', 3);
+INSERT INTO LesCommandes VALUES(4, TO_DATE('12-03-2021','DD-MM-YYYY'), 5.00, 'Pret à l''envoi', 3);
 INSERT INTO LesCommandes VALUES(5, TO_DATE('12-03-2021','DD-MM-YYYY'), 6.00, 'En cours', 2);
 INSERT INTO LesCommandes VALUES(6, TO_DATE('13-03-2021','DD-MM-YYYY'), 10.01, 'En cours', 1);
 INSERT INTO LesCommandes VALUES(7, TO_DATE('12-03-2021','DD-MM-YYYY'), 14.02, 'En cours', 1);
@@ -57,12 +57,12 @@ INSERT INTO LesCatalogues VALUES('cadre','350x200METAL', 9.90);
 INSERT INTO LesCatalogues VALUES('cadre','160x90BOIS', 3.90);
 INSERT INTO LesCatalogues VALUES('cadre','350x200BOIS', 6.90);
 
-INSERT INTO LesFichierImages VALUES(1, 'img/test.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 9, 0);
-INSERT INTO LesFichierImages VALUES(1, 'img/test2.png', TO_DATE('13-03-2021','DD-MM-YYYY'), '<info>', 15, 1);
-INSERT INTO LesFichierImages VALUES(1, 'img/test3.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 2, 0);
-INSERT INTO LesFichierImages VALUES(2, 'img/test4.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 5, 1);
-INSERT INTO LesFichierImages VALUES(3, 'img/tata.png', TO_DATE('13-03-2021','DD-MM-YYYY'), '<info>', 13, 1);
-INSERT INTO LesFichierImages VALUES(3, 'img/toto.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 10, 1);
+INSERT INTO LesFichiersImages VALUES(1, 'img/test.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 9, 0);
+INSERT INTO LesFichiersImages VALUES(1, 'img/test2.png', TO_DATE('13-03-2021','DD-MM-YYYY'), '<info>', 15, 1);
+INSERT INTO LesFichiersImages VALUES(1, 'img/test3.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 2, 0);
+INSERT INTO LesFichiersImages VALUES(2, 'img/test4.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 5, 1);
+INSERT INTO LesFichiersImages VALUES(3, 'img/tata.png', TO_DATE('13-03-2021','DD-MM-YYYY'), '<info>', 13, 1);
+INSERT INTO LesFichiersImages VALUES(3, 'img/toto.png', TO_DATE('12-03-2021','DD-MM-YYYY'), '<info>', 10, 1);
 
 
 /* pages */
