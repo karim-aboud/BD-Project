@@ -56,7 +56,7 @@ create table LesImpressions(
 
 create table LesArticles (
         id_impression number,
-        prix_LesImpressions number,
+        prix_impression number,
         quantite number,
         id_commande number,
         constraint LesArticles_PK primary key (id_impression),
