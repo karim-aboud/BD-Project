@@ -24,7 +24,7 @@ CREATE TABLE LesClients(
 	CONSTRAINT cli_pk PRIMARY KEY (IDclient)
 );
 
---LesAdresses(IDclient, _noRue, _nomRue, _ville, _CodePostal);
+--LesAdresses(_noRue, _nomRue, _ville, _CodePostal, IDclient);
 CREATE TABLE LesAdresses(
 	noRue NUMBER,
 	nomRue VARCHAR2(25),
