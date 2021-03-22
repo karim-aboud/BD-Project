@@ -1,18 +1,18 @@
 package projet;
 
-public class LesAdresses {
+public class Adresse {
+	private int noRue;
+	private String nomRue;
+	private String ville;
+	private int codePostal;
 	private int idClient; //ID client
-	int numRue;
-	String nomRue;
-	String ville;
-	int codePostal;
 	
-	public LesAdresses(int idClient, int numRue, String nomRue, String ville, int codePostal) {
-		this.idClient = idClient;
-		this.numRue = numRue;
+	public Adresse(int noRue, String nomRue, String ville, int codePostal, int idClient) {
+		this.noRue = noRue;
 		this.nomRue = nomRue;
 		this.ville = ville;
 		this.codePostal = codePostal;
+		this.idClient = idClient;
 	}
 
 	public int getIdClient() {
@@ -23,12 +23,12 @@ public class LesAdresses {
 		this.idClient = idClient;
 	}
 
-	public int getNumRue() {
-		return numRue;
+	public int getNoRue() {
+		return noRue;
 	}
 
-	public void setNumRue(int numRue) {
-		this.numRue = numRue;
+	public void setNoRue(int noRue) {
+		this.noRue = noRue;
 	}
 
 	public String getNomRue() {
