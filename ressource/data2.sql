@@ -3,9 +3,6 @@ INSERT INTO LesClients VALUES(2, 'samuel@uga.fr', 'LAURAS', 'Samuel', 'samuel');
 INSERT INTO LesClients VALUES(3, 'joumana@uga.fr', 'ELDAKAR', 'Joumana', 'jumana');
 INSERT INTO LesClients VALUES(4, 'karim@uga.fr', 'ABOUD', 'Karim', 'karim');
 INSERT INTO LesClients VALUES(5, 'romeo@uga.fr', 'AGOSSOU', 'Romeo', 'romeo');
-INSERT INTO LesClients VALUES(6, 'michel@lol.com', 'OUI_nom', 'michelle', 'salut');
-INSERT INTO LesClients VALUES(7, 'jammy@lol.fr', 'YES', 'Jammy', 'hey');
-
 
 
 INSERT INTO LesAdresses VALUES(1, 16, 'Rue Gustave Eiffel', 'Paris', 91130);
