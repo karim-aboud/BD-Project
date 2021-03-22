@@ -45,12 +45,21 @@ create table LesCommandes (
         constraint LesCommandes_FK foreign key (id_client) REFERENCES LesClients(id_client)
 );
 
+create table LesCatalogues(
+        support varchar2(10),
+        reference varchar2(20),
+        prix number,
+        constraint LesCatalogues_PK primary key (reference),
+        constraint LesCatalogues_C1 check (support in ('papier','calendrier','album','cadre'))
+);
 
 create table LesImpressions(
         id_impression number,
         id_client number,
+        reference varchar2(20),
         constraint LesImpressions_PK primary key (id_impression),
-        constraint LesImpressions_FK foreign key (id_client) REFERENCES LesClients(id_client)
+        constraint LesImpressions_FK1 foreign key (reference) REFERENCES LesCatalogues(reference),
+        constraint LesImpressions_FK2 foreign key (id_client) REFERENCES LesClients(id_client)
 );
 
 
@@ -64,13 +73,7 @@ create table LesArticles (
         constraint LesArticles_FK2 foreign key (id_commande) REFERENCES LesCommandes(id_commande)
 );
 
-create table LesCatalogues(
-        support varchar2(10),
-        reference varchar2(20),
-        prix number,
-        constraint LesCatalogues_PK primary key (reference),
-        constraint LesCatalogues_C1 check (support in ('papier','calendrier','album','cadre'))
-);
+
 
 create table LesFichiersImages(
         id_client number,
@@ -102,7 +105,7 @@ create table LesPhotos(
         text_descriptif varchar2(30),
         constraint LesPhotos_PK primary key (id_photo),
         constraint LesPhotos_FK1 foreign key (id_page) REFERENCES LesPages(id_page), 
-        constraint LesPhotos_FK2 foreign key (chemin_acces) REFERENCES LesFichierImages(chemin_acces)
+        constraint LesPhotos_FK2 foreign key (chemin_acces) REFERENCES LesFichiersImages(chemin_acces)
 );
 
 create table LesTiragesPhotos(
