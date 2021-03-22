@@ -29,7 +29,7 @@ create table LesAdresses(
         nom_rue varchar2(25),
         ville varchar2(20),
         code_postal number,
-        constraint LesAdresses_PK primary key (id_client),
+        constraint LesAdresses_PK primary key (num_rue,nom_rue,code_postal),
         constraint LesAdresses_FK foreign key (id_client) REFERENCES LesClients(id_client)
 );
 
@@ -147,6 +147,7 @@ create table LesPromotions (
         code_promo varchar2(20),
         reduction number(2),
         id_commande number,
+        constraint LesPromotions_PK primary key (code_promo),
         constraint LesPromotions_FK foreign key (id_commande) REFERENCES LesCommandes(id_commande)
 );
 
@@ -156,5 +157,6 @@ create table LesPromotions (
 create table LesStocks(
         reference varchar2(20),
         quantite number,
+        constraint LesStocks primary key (reference),
         constraint LesStocks_FK foreign key (reference)  REFERENCES LesCatalogues(reference)
 );
