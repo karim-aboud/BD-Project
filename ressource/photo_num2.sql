@@ -56,10 +56,8 @@ create table LesCatalogues(
 create table LesImpressions(
         id_impression number,
         id_client number,
-        reference varchar2(20),
         constraint LesImpressions_PK primary key (id_impression),
-        constraint LesImpressions_FK1 foreign key (reference) REFERENCES LesCatalogues(reference),
-        constraint LesImpressions_FK2 foreign key (id_client) REFERENCES LesClients(id_client)
+        constraint LesImpressions_FK foreign key (id_client) REFERENCES LesClients(id_client)
 );
 
 
