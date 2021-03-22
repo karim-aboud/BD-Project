@@ -21,7 +21,7 @@ INSERT INTO LesAdresses VALUES(7, 8, 'cours Franklin Roosevelt', 'Marseille', 13
 INSERT INTO LesCommandes VALUES(1, TO_DATE('12-03-2021','DD-MM-YYYY'), 14.00, 'En cours', 1);
 INSERT INTO LesCommandes VALUES(2, TO_DATE('13-03-2021','DD-MM-YYYY'), 13.00, 'Envoyee', 2);
 INSERT INTO LesCommandes VALUES(3, TO_DATE('12-03-2021','DD-MM-YYYY'), 10.00, 'Envoyee', 3);
-INSERT INTO LesCommandes VALUES(4, TO_DATE('12-03-2021','DD-MM-YYYY'), 5.00, 'Pret à l''envoi', 3);
+INSERT INTO LesCommandes VALUES(4, TO_DATE('12-03-2021','DD-MM-YYYY'), 5.00, 'Pret a l''envoi', 3);
 INSERT INTO LesCommandes VALUES(5, TO_DATE('12-03-2021','DD-MM-YYYY'), 6.00, 'En cours', 2);
 INSERT INTO LesCommandes VALUES(6, TO_DATE('13-03-2021','DD-MM-YYYY'), 10.01, 'En cours', 1);
 INSERT INTO LesCommandes VALUES(7, TO_DATE('12-03-2021','DD-MM-YYYY'), 14.02, 'En cours', 1);
