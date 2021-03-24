@@ -1,4 +1,12 @@
---LesClients(_IDclient, email, nom, prenom, mdp);
+"--LesClients(_IDclient, email, nom, prenom, mdp);
+CREATE TABLE LesClients(
+        IDclient NUMBER,
+        email VARCHAR2(25),
+        nom VARCHAR2(20),
+        prenom VARCHAR(20),
+        mdp VARCHAR2(20),
+        CONSTRAINT cli_pk PRIMARY KEY (IDclient)
+);"
 
 INSERT INTO LesClients VALUES (1, 'pierre@uga.fr', 'CHEVALLIER', 'Pierre', 'pierre2');
 INSERT INTO LesClients VALUES (2, 'samuel@uga.fr', 'LAURAS', 'Samuel', 'samuel');
@@ -9,8 +17,16 @@ INSERT INTO LesClients VALUES (6, 'michel@uga.fr', 'RAFAEL', 'Michelle', '154gNo
 INSERT INTO LesClients VALUES (7, 'jammy@lol.fr', 'NOEL', 'Jammy', 'hey565');
 
 
---LesAdresses(_noRue, _nomRue, _ville, _CodePostal, IDclient);
-
+"--LesAdresses(_noRue, _nomRue, _ville, _CodePostal, IDclient);
+CREATE TABLE LesAdresses(
+        noRue NUMBER,
+        nomRue VARCHAR2(25),
+        ville VARCHAR2(20),
+        CodePostal NUMBER,
+        IDclient NUMBER,
+        CONSTRAINT adr_pk PRIMARY KEY (noRue, nomRue, ville, CodePostal),
+        CONSTRAINT adr_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)        
+);"
 
 INSERT INTO LesAdresses VALUES (16, 'Rue Gustave Eiffel', 'Paris', '91130', '1');
 INSERT INTO LesAdresses VALUES (74, 'Rue Banaudon', 'Paris', '69006', '1');
@@ -27,9 +43,9 @@ INSERT INTO LesAdresses VALUES (22, 'Rue Meaux', 'Grenoble', '38856', '2');
 INSERT INTO LesCommandes VALUES (1, 2, TO_DATE('01-03-2021','DD-MM-YYYY'), 14, 'En cours');
 INSERT INTO LesCommandes VALUES (2, 4, TO_DATE('01-03-2021','DD-MM-YYYY'), 13, 'Envoyee');
 INSERT INTO LesCommandes VALUES (3, 5, TO_DATE('01-03-2021','DD-MM-YYYY'), 15, 'Envoyee');
-INSERT INTO LesCommandes VALUES (4, 7, TO_DATE('01-03-2021','DD-MM-YYYY'), 20, 'Pret a l''envoi');
+INSERT INTO LesCommandes VALUES (4, 7, TO_DATE('01-03-2021','DD-MM-YYYY'), 20, 'Pret a l'envoi');
 INSERT INTO LesCommandes VALUES (5, 1, TO_DATE('01-03-2021','DD-MM-YYYY'), 16, 'En cours');
-INSERT INTO LesCommandes VALUES (6, 6, TO_DATE('01-03-2021','DD-MM-YYYY'), 15, 'Pret a l''envoi');
+INSERT INTO LesCommandes VALUES (6, 6, TO_DATE('01-03-2021','DD-MM-YYYY'), 15, 'Pret a l'envoi');
 INSERT INTO LesCommandes VALUES (7, 3, TO_DATE('01-03-2021','DD-MM-YYYY'), 14.5, 'Envoyee');
 
 
@@ -82,23 +98,23 @@ INSERT INTO LesCatalogues VALUES ('60x42PLAN', 'calendrier', 3.6);
 INSERT INTO LesCatalogues VALUES ('42x30PLAN', 'calendrier', 3.99);
 INSERT INTO LesCatalogues VALUES ('30x21PLAN', 'calendrier', 4.99);
 INSERT INTO LesCatalogues VALUES ('21x15PLAN', 'calendrier', 5.99);
-INSERT INTO LesCatalogues VALUES ('21X30ALB', 'album', 8.5);
-INSERT INTO LesCatalogues VALUES ('15X21ALB', 'album', 10);
-INSERT INTO LesCatalogues VALUES ('21X21ALB', 'album', 12);
-INSERT INTO LesCatalogues VALUES ('30X30ALB', 'album', 15);
+INSERT INTO LesCatalogues VALUES ('21x30ALB', 'album', 8.5);
+INSERT INTO LesCatalogues VALUES ('15x21ALB', 'album', 10);
+INSERT INTO LesCatalogues VALUES ('21x21ALB', 'album', 12);
+INSERT INTO LesCatalogues VALUES ('30x30ALB', 'album', 15);
 
 
---LesArticles(_IDImpress, IDCommande, refrce, quantite, prixTOTAL);
+"--LesArticles(_IDImpress, IDCommande, refrce, quantite, prixTOTAL);
+"
 
-
-INSERT INTO LesArticles VALUES (1, 1, '15X21ALB', 2, 20);
-INSERT INTO LesArticles VALUES (2, 4, '29.7x21MAT', 3, 14.7);
-INSERT INTO LesArticles VALUES (3, 4, '30X30ALB', 1, 15);
+INSERT INTO LesArticles VALUES (1, 1, '15x21ALB', 2, 20);
+INSERT INTO LesArticles VALUES (2, 4, '30x21MAT', 3, 14.7);
+INSERT INTO LesArticles VALUES (3, 4, '30x30ALB', 1, 15);
 INSERT INTO LesArticles VALUES (4, 3, '50x50BOIS', 1, 5.99);
-INSERT INTO LesArticles VALUES (5, 2, '29.7x21POCH', 1, 4.99);
+INSERT INTO LesArticles VALUES (5, 2, '30x21POCH', 1, 4.99);
 INSERT INTO LesArticles VALUES (6, 5, '60x20BOIS', 1, 5.9);
-INSERT INTO LesArticles VALUES (7, 7, '21x14.8MAT', 1, 5.9);
-INSERT INTO LesArticles VALUES (8, 6, '84.1x59.4PLAN', 1, 5.9);
+INSERT INTO LesArticles VALUES (7, 7, '21x15MAT', 1, 5.9);
+INSERT INTO LesArticles VALUES (8, 6, '84x60PLAN', 1, 5.9);
 
 
 --LesPhotos(_IDphoto, CheminAcces, parametres, textDescrip, noPage);
@@ -112,16 +128,16 @@ INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, noPage) VALUES (5, 'img/
 
 --LesAlbums(_IDalbum, IDimpress, refrce, titre, couverture);
 
-INSERT INTO LesAlbums VALUES (1, 3, '21X29,7ALB', 'Bonjour', 2);
-INSERT INTO LesAlbums VALUES (2, 6, '15X21ALB', 'Hello World', 5);
-INSERT INTO LesAlbums VALUES (3, 5, '21X21ALB', 'BD Projet', 3);
-INSERT INTO LesAlbums VALUES (4, 2, '15X21ALB', 'My life', 1);
+INSERT INTO LesAlbums VALUES (1, 3, '21x30ALB', 'Bonjour', 2);
+INSERT INTO LesAlbums VALUES (2, 6, '15x21ALB', 'Hello World', 5);
+INSERT INTO LesAlbums VALUES (3, 5, '21x21ALB', 'BD Projet', 3);
+INSERT INTO LesAlbums VALUES (4, 2, '15x21ALB', 'My life', 1);
 
 
 --LesCadres(_IDcadre, IDimpress, refrce);
 
-INSERT INTO LesAlbums VALUES (1, 1, '30x30BOIS')
-INSERT INTO LesAlbums VALUES (4, 11, '59.4x42PLAN')
+INSERT INTO LesCadres VALUES (1, 1, '30x30BOIS')
+INSERT INTO LesCadres VALUES (4, 11, '60x42PLAN')
 
 
 --LesPages(noPage, MiseEnForme, IDphoto, IDalbum, IDcadre, IDcalendrier);
@@ -189,7 +205,7 @@ INSERT INTO LesStocks VALUES('60x42PLAN', 6);
 INSERT INTO LesStocks VALUES('42x30PLAN', 2);
 INSERT INTO LesStocks VALUES('30x21PLAN', 0);
 INSERT INTO LesStocks VALUES('21x15PLAN', 1);
-INSERT INTO LesStocks VALUES('21X30ALB', 1);
-INSERT INTO LesStocks VALUES('15X21ALB', 2);
-INSERT INTO LesStocks VALUES('21X21ALB', 6);
-INSERT INTO LesStocks VALUES('30X30ALB', 3);
+INSERT INTO LesStocks VALUES('21x30ALB', 1);
+INSERT INTO LesStocks VALUES('15x21ALB', 2);
+INSERT INTO LesStocks VALUES('21x21ALB', 6);
+INSERT INTO LesStocks VALUES('30x30ALB', 3);
