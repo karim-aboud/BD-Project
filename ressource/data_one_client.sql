@@ -7,7 +7,6 @@ INSERT INTO LesClients VALUES (1, 'pierre@uga.fr', 'CHEVALLIER', 'Pierre', 'pier
 
 
 INSERT INTO LesAdresses VALUES (16, 'Rue Gustave Eiffel', 'Paris', '91130', 1);
-INSERT INTO LesAdresses VALUES (74, 'Rue Banaudon', 'Paris', '69006', 1);
 
 
 --LesCommandes(_IDcommande, IDclient, DateCommande, prixTOTAL, statut);
