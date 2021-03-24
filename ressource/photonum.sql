@@ -55,17 +55,17 @@ CREATE TABLE LesImpressions(
 	CONSTRAINT imp_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)
 );
 
---LesArticles(_IDImpress, IDCommande, prixImpress, quantite);
+--LesArticles(_IDImpress, IDcommande, refrce, quantite, prixTOTAL);
 CREATE TABLE LesArticles (
 	IDimpress NUMBER,
-	IDcommande NUMBER,
-	prixImpress NUMBER,
+	IDcommande NUMBER NOT NULL,
+	refrce VARCHAR2(20),
 	quantite NUMBER,
+	prixTOTAL NUMBER,
 	CONSTRAINT ar_pk PRIMARY KEY (IDimpress),
 	CONSTRAINT ar_fk1 FOREIGN KEY (IDimpress) REFERENCES LesImpressions(IDimpress),
 	CONSTRAINT ar_fk2 FOREIGN KEY (IDcommande) REFERENCES LesCommandes(IDcommande)
 );
-
 
 --LesCatalogues(_refrce, support, prix);
 CREATE TABLE LesCatalogues(
@@ -89,29 +89,6 @@ CREATE TABLE LesFichiersImages(
   	CONSTRAINT fimg_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)
 );
 
---LesPages(_IDpage, IDimpress, noPage, MiseEnForme, titre);
-CREATE TABLE LesPages (
-	IDpage NUMBER,
-	IDimpress NUMBER,
-	noPage NUMBER,
-	MiseEnForme VARCHAR2(20),
-	titre VARCHAR2(15),
-	CONSTRAINT pg_pk PRIMARY KEY (IDpage),
-	CONSTRAINT pg_fk FOREIGN KEY (IDimpress) REFERENCES LesImpressions(IDimpress)
-);
-
---LesPhotos(_IDphoto, IDpage, CheminAcces, parametres, textDescrip);
-CREATE TABLE LesPhotos(
-	IDphoto NUMBER,
-	IDpage NUMBER, 
-	CheminAcces VARCHAR2(20),
-	parametres VARCHAR2(20),
-	textDescrip VARCHAR2(30),
-	CONSTRAINT pho_pk PRIMARY KEY (IDphoto),
-	CONSTRAINT pho_fk1 FOREIGN KEY (IDpage) REFERENCES LesPages(IDpage), 
-	CONSTRAINT pho_fk2 FOREIGN KEY (CheminAcces) REFERENCES LesFichiersImages(CheminAcces)
-);
-
 --LesTiragesPhotos(_IDimpress, refrce, CheminAcces, parametres, nbExemplaire);
 CREATE TABLE LesTiragesPhotos(
 	IDimpress NUMBER,
@@ -123,36 +100,65 @@ CREATE TABLE LesTiragesPhotos(
 	CONSTRAINT tirpho_fk FOREIGN KEY (refrce) REFERENCES LesCatalogues(refrce)
 );
 
---LesAlbums(_IDimpress, refrce, titre, couverture);
+--LesPhotos(_IDphoto, CheminAcces, parametres, textDescrip, noPage);
+CREATE TABLE LesPhotos(
+	IDphoto NUMBER,
+	CheminAcces VARCHAR2(20),
+	parametres VARCHAR2(20),
+	textDescrip VARCHAR2(30),
+	noPage NUMBER,
+	CONSTRAINT pho_pk PRIMARY KEY (IDphoto),
+	CONSTRAINT pho_fk1 FOREIGN KEY (CheminAcces) REFERENCES LesFichiersImages(CheminAcces)
+);
+
+--LesAlbums(_IDalbum, IDimpress, refrce, titre, couverture);
 CREATE TABLE LesAlbums (
+	IDalbum NUMBER,
 	IDimpress NUMBER,
 	refrce VARCHAR2(20),
 	titre VARCHAR2(20),
-	couverture NUMBER,
-	CONSTRAINT alb_pk PRIMARY KEY (IDimpress),
+	couverture NUMBER, --IDphoto
+	CONSTRAINT alb_pk PRIMARY KEY (IDalbum),
 	CONSTRAINT alb_fk1 FOREIGN KEY (refrce) REFERENCES LesCatalogues(refrce),
 	CONSTRAINT alb_fk2 FOREIGN KEY (IDimpress) REFERENCES LesImpressions(IDimpress),
-	CONSTRAINT  alb_fk3 FOREIGN KEY (couverture) REFERENCES LesPhotos(IDphoto)
+	CONSTRAINT alb_fk3 FOREIGN KEY (couverture) REFERENCES LesPhotos(IDphoto)
 );
---LesCadres(_IDimpress, refrce);
+--LesCadres(_IDcadre, IDimpress, refrce);
 CREATE TABLE LesCadres(
+	IDcadre NUMBER,
 	IDimpress NUMBER,
 	refrce VARCHAR2(20),	
-	CONSTRAINT LesCadres_PK PRIMARY KEY (IDimpress),
+	CONSTRAINT LesCadres_PK PRIMARY KEY (IDcadre),
 	CONSTRAINT LesCadres_FK1 FOREIGN KEY (IDimpress) REFERENCES LesImpressions(IDimpress),
 	CONSTRAINT LesCadres_FK2 FOREIGN KEY (refrce) REFERENCES LesCatalogues(refrce)	
 );
 
---LesCalendries(_IDimpress, refrce);
+--LesCalendries(_IDcalendrier,IDimpress, refrce);
 CREATE TABLE LesCalendriers (
+	IDcalendrier NUMBER,
 	IDimpress NUMBER,
 	refrce VARCHAR2(20),
-	CONSTRAINT cal_pk PRIMARY KEY (IDimpress),
+	CONSTRAINT cal_pk PRIMARY KEY (IDcalendrier),
 	CONSTRAINT cal_fk1 FOREIGN KEY (IDimpress) REFERENCES LesImpressions(IDimpress),
 	CONSTRAINT cal_fk2 FOREIGN KEY (refrce) REFERENCES LesCatalogues(refrce)
 );
 
---LesPromotions(_codePromo, IDcommande)
+--LesPages(noPage, MiseEnForme, IDphoto, IDalbum, IDcadre, IDcalendrier);
+CREATE TABLE LesPages (
+	noPage NUMBER,
+	MiseEnForme VARCHAR2(20),
+	IDphoto NUMBER NOT NULL,
+	IDalbum NUMBER,
+	IDcadre NUMBER,
+	IDcalendrier NUMBER,
+	--CONSTRAINT pg_pk PRIMARY KEY (IDpage),
+	CONSTRAINT pg_fk1 FOREIGN KEY (IDcadre) REFERENCES LesCadres(IDcadre),
+	CONSTRAINT pg_fk2 FOREIGN KEY (IDalbum) REFERENCES LesAlbums(IDalbum),
+	CONSTRAINT pg_fk3 FOREIGN KEY (IDcalendrier) REFERENCES LesCalendriers(IDcalendrier),
+	CONSTRAINT pg_fk4 FOREIGN KEY (IDphoto) REFERENCES LesPhotos(IDphoto)
+);
+
+--LesPromotions(_codePromo, IDcommande, reduction)
 CREATE TABLE LesPromotions (
 	codePromo VARCHAR2(20),
 	IDcommande NUMBER,
