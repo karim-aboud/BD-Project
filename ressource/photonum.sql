@@ -31,7 +31,7 @@ CREATE TABLE LesAdresses(
 	ville VARCHAR2(20),
 	CodePostal NUMBER,
 	IDclient NUMBER,
-	CONSTRAINT adr_pk PRIMARY KEY (noRue, nomRue, ville, CodePostal),
+	CONSTRAINT adr_pk PRIMARY KEY (IDclient),
 	CONSTRAINT adr_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)	
 );
 
