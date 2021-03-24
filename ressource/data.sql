@@ -1,12 +1,5 @@
-"--LesClients(_IDclient, email, nom, prenom, mdp);
-CREATE TABLE LesClients(
-        IDclient NUMBER,
-        email VARCHAR2(25),
-        nom VARCHAR2(20),
-        prenom VARCHAR(20),
-        mdp VARCHAR2(20),
-        CONSTRAINT cli_pk PRIMARY KEY (IDclient)
-);"
+--LesClients(_IDclient, email, nom, prenom, mdp);
+
 
 INSERT INTO LesClients VALUES (1, 'pierre@uga.fr', 'CHEVALLIER', 'Pierre', 'pierre2');
 INSERT INTO LesClients VALUES (2, 'samuel@uga.fr', 'LAURAS', 'Samuel', 'samuel');
@@ -17,16 +10,8 @@ INSERT INTO LesClients VALUES (6, 'michel@uga.fr', 'RAFAEL', 'Michelle', '154gNo
 INSERT INTO LesClients VALUES (7, 'jammy@lol.fr', 'NOEL', 'Jammy', 'hey565');
 
 
-"--LesAdresses(_noRue, _nomRue, _ville, _CodePostal, IDclient);
-CREATE TABLE LesAdresses(
-        noRue NUMBER,
-        nomRue VARCHAR2(25),
-        ville VARCHAR2(20),
-        CodePostal NUMBER,
-        IDclient NUMBER,
-        CONSTRAINT adr_pk PRIMARY KEY (noRue, nomRue, ville, CodePostal),
-        CONSTRAINT adr_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)        
-);"
+--LesAdresses(_noRue, _nomRue, _ville, _CodePostal, IDclient);
+
 
 INSERT INTO LesAdresses VALUES (16, 'Rue Gustave Eiffel', 'Paris', '91130', '1');
 INSERT INTO LesAdresses VALUES (74, 'Rue Banaudon', 'Paris', '69006', '1');
@@ -43,9 +28,9 @@ INSERT INTO LesAdresses VALUES (22, 'Rue Meaux', 'Grenoble', '38856', '2');
 INSERT INTO LesCommandes VALUES (1, 2, TO_DATE('01-03-2021','DD-MM-YYYY'), 14, 'En cours');
 INSERT INTO LesCommandes VALUES (2, 4, TO_DATE('01-03-2021','DD-MM-YYYY'), 13, 'Envoyee');
 INSERT INTO LesCommandes VALUES (3, 5, TO_DATE('01-03-2021','DD-MM-YYYY'), 15, 'Envoyee');
-INSERT INTO LesCommandes VALUES (4, 7, TO_DATE('01-03-2021','DD-MM-YYYY'), 20, 'Pret a l'envoi');
+INSERT INTO LesCommandes VALUES (4, 7, TO_DATE('01-03-2021','DD-MM-YYYY'), 20, 'Pret a l''envoi');
 INSERT INTO LesCommandes VALUES (5, 1, TO_DATE('01-03-2021','DD-MM-YYYY'), 16, 'En cours');
-INSERT INTO LesCommandes VALUES (6, 6, TO_DATE('01-03-2021','DD-MM-YYYY'), 15, 'Pret a l'envoi');
+INSERT INTO LesCommandes VALUES (6, 6, TO_DATE('01-03-2021','DD-MM-YYYY'), 15, 'Pret a l''envoi');
 INSERT INTO LesCommandes VALUES (7, 3, TO_DATE('01-03-2021','DD-MM-YYYY'), 14.5, 'Envoyee');
 
 
@@ -104,8 +89,8 @@ INSERT INTO LesCatalogues VALUES ('21x21ALB', 'album', 12);
 INSERT INTO LesCatalogues VALUES ('30x30ALB', 'album', 15);
 
 
-"--LesArticles(_IDImpress, IDCommande, refrce, quantite, prixTOTAL);
-"
+--LesArticles(_IDImpress, IDCommande, refrce, quantite, prixTOTAL);
+
 
 INSERT INTO LesArticles VALUES (1, 1, '15x21ALB', 2, 20);
 INSERT INTO LesArticles VALUES (2, 4, '30x21MAT', 3, 14.7);
