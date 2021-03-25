@@ -91,14 +91,14 @@ INSERT INTO LesFichiersImages VALUES('img/chat.png',1,TO_DATE('01-03-2021','DD-M
 
 
 
---LesPhotos(_IDphoto, CheminAcces, parametres, textDescrip, noPage);
+--LesPhotos(_IDphoto,  idPage,CheminAcces, parametres, textDescrip);
 
-INSERT INTO LesPhotos(IDphoto, CheminAcces, noPage) VALUES (2, 'img/chien.png', 1);
-INSERT INTO LesPhotos(IDphoto, CheminAcces, textDescrip, noPage) VALUES (1, 'img/ciel.png', 'Photo du ciel', 2);
-INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, noPage) VALUES (3, 'img/soleil.png', 'augmenter luminosite', 3);
-INSERT INTO LesPhotos(IDphoto, CheminAcces, textDescrip, noPage) VALUES (4, 'img/ann2020.png', 'annee 2020', 3);
-INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, noPage) VALUES (6, 'img/world.png', 'diminuer contraste', 4);
-INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, noPage) VALUES (5, 'img/chat.png', 'diminuer contraste', 5);
+INSERT INTO LesPhotos(IDphoto, CheminAcces, idPage) VALUES (2, 1,'img/chien.png');
+INSERT INTO LesPhotos(IDphoto, CheminAcces, textDescrip, idPage) VALUES (1,2, 'img/ciel.png', 'Photo du ciel');
+INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, idPage) VALUES (3,3 'img/soleil.png', 'augmenter luminosite');
+INSERT INTO LesPhotos(IDphoto, CheminAcces, textDescrip, idPage) VALUES (4,4 'img/ann2020.png', 'annee 2020');
+INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, idPage) VALUES (6, 5,'img/world.png', 'diminuer contraste');
+INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, idPage) VALUES (5, 6,'img/chat.png', 'diminuer contraste');
 
 --LesAlbums(_IDalbum, IDimpress, refrce, titre, couverture);
 
@@ -117,7 +117,7 @@ INSERT INTO LesCadres VALUES (3, 4, '45x30BOIS');
 
 
 
---LesPages(noPage, MiseEnForme, IDphoto, IDalbum, IDcadre, IDcalendrier);
+--LesPages(idPage, noPage, MiseEnForme, IDphoto, IDalbum, IDcadre, IDcalendrier);
 
 INSERT INTO LesPages(noPage,IDphoto,IDcadre) VALUES(1,2,1)
 INSERT INTO LesPages(noPage,IDphoto,IDcadre) VALUES(2,1,2)
