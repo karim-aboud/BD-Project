@@ -55,7 +55,7 @@ CREATE TABLE LesImpressions(
 	CONSTRAINT imp_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)
 );
 
---LesArticles(_IDImpress, IDcommande, refrce, quantite, prixTOTAL);
+--LesArticles(_IDImpress, IDcommande, refrce, quantite, prix);
 CREATE TABLE LesArticles (
 	IDimpress NUMBER,
 	IDcommande NUMBER NOT NULL,
