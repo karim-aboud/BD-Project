@@ -61,7 +61,7 @@ CREATE TABLE LesArticles (
 	IDcommande NUMBER NOT NULL,
 	refrce VARCHAR2(20),
 	quantite NUMBER,
-	prixTOTAL NUMBER,
+	prix NUMBER,
 	CONSTRAINT ar_pk PRIMARY KEY (IDimpress),
 	CONSTRAINT ar_fk1 FOREIGN KEY (IDimpress) REFERENCES LesImpressions(IDimpress),
 	CONSTRAINT ar_fk2 FOREIGN KEY (IDcommande) REFERENCES LesCommandes(IDcommande)
