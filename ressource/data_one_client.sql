@@ -15,13 +15,6 @@ INSERT INTO LesCommandes VALUES (1, 1, TO_DATE('01-03-2021','DD-MM-YYYY'), 9, 'E
 INSERT INTO LesCommandes VALUES (3, 1, TO_DATE('01-03-2021','DD-MM-YYYY'), 13.6,'En cours');
 
 
---LesImpressions(_IDimpress, IDclient);
-
-INSERT INTO LesImpressions VALUES (1, 1);
-INSERT INTO LesImpressions VALUES (2, 1);
-INSERT INTO LesImpressions VALUES (3, 1);
-INSERT INTO LesImpressions VALUES (4, 1);
-
 
 --LesCatalogues(_refrce, support, prix);
 
@@ -91,41 +84,48 @@ INSERT INTO LesFichiersImages VALUES('img/chat.png',1,TO_DATE('01-03-2021','DD-M
 
 
 
---LesPhotos(_IDphoto,  idPage,CheminAcces, parametres, textDescrip);
+--LesAlbums(IDimpress, refrce, titre, couverture);
 
-INSERT INTO LesPhotos(IDphoto, CheminAcces, idPage) VALUES (2, 1,'img/chien.png');
-INSERT INTO LesPhotos(IDphoto, CheminAcces, textDescrip, idPage) VALUES (1,2, 'img/ciel.png', 'Photo du ciel');
-INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, idPage) VALUES (3,3 'img/soleil.png', 'augmenter luminosite');
-INSERT INTO LesPhotos(IDphoto, CheminAcces, textDescrip, idPage) VALUES (4,4 'img/ann2020.png', 'annee 2020');
-INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, idPage) VALUES (6, 5,'img/world.png', 'diminuer contraste');
-INSERT INTO LesPhotos(IDphoto, CheminAcces, parametres, idPage) VALUES (5, 6,'img/chat.png', 'diminuer contraste');
-
---LesAlbums(_IDalbum, IDimpress, refrce, titre, couverture);
-
-INSERT INTO LesAlbums VALUES (1, 3, '15x21ALB', 'Bonjour', 5);
+INSERT INTO LesAlbums VALUES (1, '15x21ALB', 'Bonjour', 5);
 
 
---LesCadres(_IDcadre, IDimpress, refrce);
+--LesCadres(IDimpress, refrce);
 
-INSERT INTO LesCadres VALUES (1, 1, '30x20BOIS');
-INSERT INTO LesCadres VALUES (2, 2, '90x30BOIS');
-INSERT INTO LesCadres VALUES (3, 4, '45x30BOIS');
+INSERT INTO LesCadres VALUES (3, '30x20BOIS');
+INSERT INTO LesCadres VALUES (2, '90x30BOIS');
+INSERT INTO LesCadres VALUES (4, '45x30BOIS');
 
 
 --LesCalendries(_IDcalendrier,IDimpress, refrce);
 
 
+--LesImpressions(_IDimpress, IDclient);
+
+INSERT INTO LesImpressions VALUES (1, 1);
+INSERT INTO LesImpressions VALUES (2, 1);
+INSERT INTO LesImpressions VALUES (3, 1);
+INSERT INTO LesImpressions VALUES (4, 1);
 
 
---LesPages(idPage, noPage, MiseEnForme, IDphoto, IDalbum, IDcadre, IDcalendrier);
 
-INSERT INTO LesPages(noPage,IDphoto,IDcadre) VALUES(1,2,1)
-INSERT INTO LesPages(noPage,IDphoto,IDcadre) VALUES(2,1,2)
-INSERT INTO LesPages(noPage,IDphoto,IDcadre) VALUES(5,5,3)
-INSERT INTO LesPages(noPage,IDphoto,IDalbum) VALUES(3,3,1)
-INSERT INTO LesPages(noPage,IDphoto,IDalbum) VALUES(3,4,1)
-INSERT INTO LesPages(noPage,IDphoto,IDalbum) VALUES(4,6,1)
+--LesPages(idPage, idImpression noPage, MiseEnForme , titre);
 
+INSERT INTO LesPages(idPage,IDimpress,noPage,mise_en_forme,titre) VALUES(11,1,1,"<nth>","mes vacances"); 
+INSERT INTO LesPages(idPage,IDimpress,noPage,mise_en_forme,titre) VALUES(12,1,2,"<nth>","mes vacances 2");
+INSERT INTO LesPages(idPage,IDimpress,noPage,mise_en_forme,titre) VALUES(13,1,3,"<nth>","souvenirs");
+INSERT INTO LesPages(idPage,IDimpress,noPage,mise_en_forme,titre) VALUES(21,2,1,"<nth>","mes vacances");
+INSERT INTO LesPages(idPage,IDimpress,noPage,mise_en_forme,titre) VALUES(31,3,1,"<nth>","mes vacances 2");
+INSERT INTO LesPages(idPage,IDimpress,noPage,mise_en_forme,titre) VALUES(41,4,1,"<nth>","souvenirs");
+
+
+--LesPhotos(idPage, CheminAcces, parametres, textDescrip);
+
+INSERT INTO LesPhotos(idPage, CheminAcces, textDescrip) VALUES (11,'img/chien.png');
+INSERT INTO LesPhotos(idPage, CheminAcces, textDescrip) VALUES (11, 'img/ciel.png', 'Photo du ciel');
+INSERT INTO LesPhotos(idPage, CheminAcces, textDescrip) VALUES (12, 'img/soleil.png', 'augmenter luminosite');
+INSERT INTO LesPhotos(idPage, CheminAcces, textDescrip) VALUES (13, 'img/ann2020.png', 'annee 2020');
+INSERT INTO LesPhotos(idPage, CheminAcces, textDescrip) VALUES (21, 'img/world.png', 'diminuer contraste');
+INSERT INTO LesPhotos(idPage, CheminAcces, textDescrip) VALUES (31, 'img/chat.png', 'diminuer contraste');
 
 --LesStocks(_refrce, quantite)
 
