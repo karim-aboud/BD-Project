@@ -1,5 +1,5 @@
 # BD-Project L3 MIAGE
 
-Projet réaliser le Groupe 03
+Projet réaliser par le Groupe 03
 
 
