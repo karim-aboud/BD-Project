@@ -33,7 +33,7 @@ CREATE TABLE LesAdresses(
 	CodePostal NUMBER,
 	IDclient NUMBER,
 	CONSTRAINT adr_pk PRIMARY KEY (IDadresse),
-	CONSTRAINT adr_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)	
+	CONSTRAINT adr_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient) ON DELETE CASCADE
 );
 
 --LesCommandes(_IDcommande, IDclient, DateCommande, prixTOTAL, statut);
@@ -45,7 +45,7 @@ CREATE TABLE LesCommandes (
 	statut VARCHAR2(20),
 	CONSTRAINT commd_pk PRIMARY KEY (IDcommande),
 	CONSTRAINT commd_ck check ( statut in ('En cours', 'Pret a l''envoi', 'Envoyee') ),
-	CONSTRAINT commd_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)
+	CONSTRAINT commd_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient) ON DELETE CASCADE
 );
 
 --LesImpressions(_IDimpress, IDclient);
@@ -53,7 +53,7 @@ CREATE TABLE LesImpressions(
 	IDimpress NUMBER,
 	IDclient NUMBER,
 	CONSTRAINT imp_pk PRIMARY KEY (IDimpress),
-	CONSTRAINT imp_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient)
+	CONSTRAINT imp_fk FOREIGN KEY (IDclient) REFERENCES LesClients(IDclient) ON DELETE CASCADE
 );
 
 --LesArticles(_IDImpress, IDcommande, refrce, quantite, prix);
@@ -65,7 +65,7 @@ CREATE TABLE LesArticles (
 	prix NUMBER,
 	CONSTRAINT ar_pk PRIMARY KEY (IDimpress),
 	CONSTRAINT ar_fk1 FOREIGN KEY (IDimpress) REFERENCES LesImpressions(IDimpress),
-	CONSTRAINT ar_fk2 FOREIGN KEY (IDcommande) REFERENCES LesCommandes(IDcommande)
+	CONSTRAINT ar_fk2 FOREIGN KEY (IDcommande) REFERENCES LesCommandes(IDcommande) ON DELETE CASCADE
 );
 
 --LesCatalogues(_refrce, support, prix);
@@ -99,7 +99,7 @@ CREATE TABLE LesTiragesPhotos(
 	nbExemplaire NUMBER,
 	CONSTRAINT tirpho_pk PRIMARY KEY (IDimpress),
 	CONSTRAINT tirpho_fk FOREIGN KEY (refrce) REFERENCES LesCatalogues(refrce),
-	CONSTRAINT tirpho_fk2 FOREIGN KEY (CheminAcces) REFERENCES LesFichiersImages(CheminAcces) 
+	CONSTRAINT tirpho_fk2 FOREIGN KEY (CheminAcces) REFERENCES LesFichiersImages(CheminAcces) ON DELETE CASCADE
 );
 
 --LesPhotos(_IDpage, CheminAcces, parametres, textDescrip, noPage);
