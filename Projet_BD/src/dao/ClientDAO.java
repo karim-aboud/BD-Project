@@ -18,7 +18,7 @@ public class ClientDAO extends DAO<Client> {
 			
 			PreparedStatement prepare = this.connect.prepareStatement(
 					"insert into LesClients(IDclient,email,nom,prenom,mdp)"+
-					"values(?,?,?,?,?)"
+					" values(?,?,?,?,?)"
 					);
 			
 			prepare.setInt(1,obj.getIdClient());
@@ -47,36 +47,48 @@ public class ClientDAO extends DAO<Client> {
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
 			String q = 	"SELECT * FROM LesClients " +
-						"NATURAL JOIN LesAdresses "+
-						"LEFT NATURAL JOIN LesCommandes "+
 						"WHERE IDclient=" + id;
-			
+
 			ResultSet rs = myStm.executeQuery(q);
+			
 			
 			if (rs.first()) {
 				client = new Client(id,rs.getString("email"),rs.getString("nom"),
 						rs.getString("prenom"),rs.getString("mdp"));
 				
-				//client.setAdresse(adresseDAO.read(id));
 			}
 			
-			rs.beforeFirst();		 
-			
+			String q2 = "SELECT * FROM LesCommandes " +
+					"WHERE IDclient=" + id;
+
+			 rs = myStm.executeQuery(q);		
+			 rs.next();
+
 			while(rs.next()) {
 				client.addCommande(commandeDAO.read(rs.getInt("IDcommande")));
-				//client.addAdresse(adresseDAO.read(rs.getInt("IDadresse")));
 			}
 			
-			String q2 = " SELECT CheminAcces FROM LesFichiersImages WHERE IDclient="+id;
+			String q3 = " SELECT CheminAcces FROM LesFichiersImages WHERE IDclient="+id;
 
 			
-			rs = myStm.executeQuery(q2);
+			rs = myStm.executeQuery(q3);
 			rs.beforeFirst();			
 			
 			while(rs.next()) {
 				client.addFichierImage(fichierDAO.read(rs.getString("CheminAcces")));
 			}
-		
+			
+			String q4 = " SELECT * FROM LesAdresses WHERE IDclient="+id;
+
+			
+			rs = myStm.executeQuery(q4);
+			rs.beforeFirst();			
+			
+			while(rs.next()) {
+				client.addAdresse(adresseDAO.read(rs.getInt("IDadresse")));
+				
+			}
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,7 +106,7 @@ public class ClientDAO extends DAO<Client> {
 			
 			PreparedStatement prepare = this.connect.prepareStatement(
 					"update LesClients set email=?, nom=?, prenom=?, mdp=?"+
-					"where IDclient="+obj.getIdClient() );
+					" where IDclient="+obj.getIdClient() );
 			
 			prepare.setString(1, obj.getAdrMail());
 			prepare.setString(2, obj.getNom());

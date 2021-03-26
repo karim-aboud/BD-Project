@@ -58,6 +58,11 @@ public class Album {
 		this.couverture = couverture;
 	}
 	
-	
+	public String toString() {
+		return "Album [id = "+id_impression+" ]"+"\n"+
+				"Reference: "+reference+"\n"+
+				"Titre: "+titre+"\n"+
+				"ID page couverture: "+couverture+"\n";
+	}
 
 }

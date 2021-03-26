@@ -1,6 +1,7 @@
 package metiers;
+
 public class Adresse {
-	
+	private int id_adresse;
 	private int num_rue;
 	private String nom_rue;
 	private String ville;
@@ -9,13 +10,21 @@ public class Adresse {
 	
 	public Adresse() {}
 	
-	public Adresse (int numRue, String nomRue,String ville,int codePostal,int id_client) {
-		
+	public Adresse (int id_adresse, int numRue, String nomRue,String ville,int codePostal,int id_client) {
+		this.id_adresse = id_adresse;
 		this.num_rue = numRue;
 		this.nom_rue = nomRue;
 		this.ville = ville;
 		this.code_postal = codePostal;
 		this.id_client=id_client;
+	}
+
+	public int getId_adresse() {
+		return id_adresse;
+	}
+
+	public void setId_adresse(int id_adresse) {
+		this.id_adresse = id_adresse;
 	}
 
 	public int getIdClient() {

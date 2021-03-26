@@ -10,7 +10,7 @@ public class Client {
 	private String nom;
 	private String prenom;
 	private String mot_de_passe;
-	private Adresse adresse;
+	private Set<Adresse> listeAdresses = new HashSet<Adresse>();
 	private Set<FichierImage> listeFichiersImages = new HashSet<FichierImage>();
 	private Set<Commande> listeCommandes = new HashSet<Commande>();
 	
@@ -65,15 +65,42 @@ public class Client {
 		this.mot_de_passe = mot_de_passe;
 	}
 	
-	public Adresse getAdresse() {
-		return this.adresse;
-	}
-	
-	public void setAdresse( Adresse a) {
-		this.adresse = a;
-		
+	public Set<Adresse> getListeAdresses() {
+		return listeAdresses;
 	}
 
+	public void setListeAdresses(Set<Adresse> listeAdresses) {
+		this.listeAdresses = listeAdresses;
+	}
+	
+	
+	public String getAdressesAsString() {
+		
+		String res="\n\n";
+		
+		for( Adresse adr : listeAdresses ){
+            res+=adr.toString();
+        }
+		return res;
+	}
+	
+	public void addAdresse(Adresse adr) {
+		listeAdresses.add(adr);
+	}
+	
+
+	public void removeAdresse(Adresse adr) {
+		listeAdresses.remove(adr);
+	}
+	
+	public void printListeAdresses() {
+		
+		for( Adresse adr : listeAdresses ){
+            System.out.println(adr.toString());
+        }
+	}
+	
+	
 	public Set<FichierImage> getListeFichiersImages() {
 		return listeFichiersImages;
 	}
@@ -140,10 +167,10 @@ public class Client {
 				"---------------------------\n"+
 				"Mail: "+adr_mail+"\n"+
 				"Nom: "+nom+"\n"+
-				"Prenom: "+prenom+"\n"+
-				"Adresse: "+adresse+"\n\n"+
+				"Prenom: "+prenom+"\n\n"+
+				"Adresse(s): "+getAdressesAsString()+"\n\n"+
 				"Fichier images: "+getFichiersImagesAsString()+"\n\n"+
-				"Commandes: "+displayCommandes()+"\n\n" 
+				"Commande(s): "+displayCommandes()+"\n\n" 
 				+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
 	}
 	

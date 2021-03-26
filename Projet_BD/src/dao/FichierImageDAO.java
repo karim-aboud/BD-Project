@@ -88,7 +88,7 @@ public class FichierImageDAO extends DAO<FichierImage> {
 			PreparedStatement prepare = this.connect.prepareStatement(
 					"update LesFichiersImages set IDclient=?, DateCreation=?,"+
 					" InfoPriseVue=?, Resolution=?, estPartage=?"+
-					"where CheminAcces='"+obj.getChemin_acces()+"'"); 
+					" where CheminAcces='"+obj.getChemin_acces()+"'"); 
 			
 			prepare.setInt(1,obj.getId_client());
 			prepare.setDate(2, obj.getDate_creation());

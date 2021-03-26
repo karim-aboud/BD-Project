@@ -14,6 +14,11 @@ public class Commande {
 	
 	public Commande() {}
 	
+	public Commande(int prix, int id_client) {
+		this.prix_total=prix;
+		this.id_client = id_client;
+	}
+	
 	public Commande(int id_commande,int id_client,Date date_commande, float prix_total, String statut) {
 		this.id_commande = id_commande;
 		this.date_commande = date_commande;

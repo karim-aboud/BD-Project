@@ -1,16 +1,17 @@
 package metiers;
 
-public class Calendrier {
-
+public class Cadre {
+	
 	private int id_impression;
 	private String reference;
-
-	public Calendrier(int id_impression, String reference) {
+	
+	public Cadre() {}
+	
+	public Cadre(int id_impression, String reference) {
+		
 		this.id_impression = id_impression;
 		this.reference = reference;
 	}
-
-	public Calendrier() {}
 
 	public int getId_impression() {
 		return id_impression;
@@ -29,8 +30,8 @@ public class Calendrier {
 	}
 	
 	public String toString() {
-		return "Calendrier [id = "+id_impression+" ]"+"\n"+
+		return "Cadre [id = "+id_impression+" ]"+"\n"+
 				"Reference: "+reference+"\n";
 	}
-
+	
 }

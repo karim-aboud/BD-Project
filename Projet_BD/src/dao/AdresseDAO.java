@@ -1,12 +1,12 @@
 package dao;
+
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import metiers.Adresse;
-import metiers.Client;
 
 public class AdresseDAO extends DAO<Adresse> {
 
@@ -22,15 +22,16 @@ public class AdresseDAO extends DAO<Adresse> {
 		try {
 			
 			PreparedStatement prepare = this.connect.prepareStatement(
-					"insert into LesAdresses(noRue,nomRue,ville,CodePostal,IDclient)"+
-					"values(?,?,?,?,?)"
+					"insert into LesAdresses(IDadresse,noRue,nomRue,ville,CodePostal,IDclient)"+
+					"values(?,?,?,?,?,?)"
 					);
 			
-			prepare.setInt(1, obj.getNumRue());
-			prepare.setString(2, obj.getNomRue());
-			prepare.setString(3, obj.getVille());
-			prepare.setInt(4, obj.getCodePostal());
-			prepare.setInt(5,obj.getIdClient());
+			prepare.setInt(1, obj.getId_adresse());
+			prepare.setInt(2, obj.getNumRue());
+			prepare.setString(3, obj.getNomRue());
+			prepare.setString(4, obj.getVille());
+			prepare.setInt(5, obj.getCodePostal());
+			prepare.setInt(6,obj.getIdClient());
 
 			ins = prepare.executeUpdate();
 
@@ -47,13 +48,13 @@ public class AdresseDAO extends DAO<Adresse> {
 		try {
 			Statement myStm = this.connect.createStatement(this.type,this.mode);
 			String q = 	"SELECT * FROM LesAdresses " +
-						"WHERE IDclient="+id;
+						"WHERE IDadresse="+id;
 			
 			ResultSet rs = myStm.executeQuery(q);
 			
 			if (rs.first()) {
-				adresse = new Adresse(rs.getInt("noRue"),rs.getString("nomRue"),
-						rs.getString("ville"),rs.getInt("CodePostal"),id);		
+				adresse = new Adresse(id,rs.getInt("noRue"),rs.getString("nomRue"),
+						rs.getString("ville"),rs.getInt("CodePostal"),rs.getInt("IDclient"));		
 			}
 			
 		} catch (SQLException e) {
@@ -72,7 +73,7 @@ public class AdresseDAO extends DAO<Adresse> {
 			
 			PreparedStatement prepare = this.connect.prepareStatement(
 					"update LesAdresses set noRue=?, nomRue=?, ville=?, CodePostal=?"+
-					"where IDclient="+obj.getIdClient() );
+					"where IDadresse="+obj.getIdClient() );
 			
 			prepare.setInt(1, obj.getNumRue());
 			prepare.setString(2, obj.getNomRue());
@@ -95,7 +96,7 @@ public class AdresseDAO extends DAO<Adresse> {
 		
 		try {
 			Statement myStm = this.connect.createStatement();
-			String supAdresse = "delete from LesAdresses where IDclient="+obj.getIdClient();
+			String supAdresse = "delete from LesAdresses where IDadresse="+obj.getId_adresse();
 			myStm.executeUpdate(supAdresse);
 			
 			

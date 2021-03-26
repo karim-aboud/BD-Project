@@ -25,11 +25,11 @@ public class ConnectionClient  {
 		System.out.print("Mot de passe:");
 		String mdp = LectureClavier.lireChaine();
 		
-		String newId = "SELECT MAX(id_client)+1 AS id_client FROM LesClients";
+		String newId = "SELECT MAX(IDclient)+1 AS IDclient FROM LesClients";
 		Statement Stm = conn.createStatement();
 		ResultSet rs = Stm.executeQuery(newId); 
 		rs.next();
-		int id = rs.getInt("id_client");
+		int id = rs.getInt("IDclient");
 		
 		String ajout = "INSERT INTO LesClients(IDclient,email,nom,"+
 						"prenom,mdp) "+
